@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('STUDENT DATA') }}</div>
+                <div class="card-header">{{ __('USER DATA') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,29 +13,29 @@
                         </div>
                     @endif
 
-                    <a href="/students/create" class="btn btn-primary">Add Data</a><br><br>
+                    <a href="/users/create" class="btn btn-primary">Add Data</a><br><br>
 
                     <table class="table table-responsive table-striped">
                         <thead>
                             <tr>
-                                <th>NIM</th>
-                                <th>Name</th>
-                                <th>Class</th>
-                                <th>Department</th>
-                                <th>Action</th>
+                                    <th>ID</th> 
+                                    <th>Username</th> 
+                                    <th>Name</th> 
+                                    <th>Email</th> 
+                                    <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($student as $s)
+                            @foreach($user as $u)
                             <tr>
-                                <td>{{ $s->nim }}</td>
-                                <td>{{ $s->name }}</td>
-                                <td>{{ $s->class }}</td>
-                                <td>{{ $s->department }}</td>
+                                <td>{{ $u->id }}</td> 
+                                <td>{{ $u->username }}</td> 
+                                <td>{{ $u->name }}</td>
+                                <td>{{ $u->email }}</td>
                                 <td>
-                                <form action="/students/{{$s->id}}" method="post">
-                                    <a href="/students/{{$s->id}}" class="btn btn-info">View</a>
-                                    <a href="/students/{{$s->id}}/edit" class="btn btn-warning">Edit</a>
+                                <form action="/users/{{$u->id}}" method="post">
+                                    <a href="/users/{{$u->id}}" class="btn btn-info">View</a>
+                                    <a href="/users/{{$u->id}}/edit" class="btn btn-warning">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" name="delete" class="btn btn-danger">Delete</button>
