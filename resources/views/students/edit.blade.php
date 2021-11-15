@@ -12,6 +12,8 @@
                         <div class="alert alert-success" role="alert">{{ session('status') }}
                         </div>
                     @endif
+
+                    <form action="/students" method="post" enctype="multipart/form-data">
                     <form action="/students/{{$student->id}}" method="post">
                         {{csrf_field()}}
                         @method('PUT')
@@ -41,6 +43,11 @@
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
                             <input type="text" class="form-control" required="required" name="phone_number" value="{{$student->phone_number}}"></br>
+                        </div>
+                        <div class="form-group">
+                            <label for="photo">Feature Image</label>
+                            <input type="file" class="form-control" required="required" name="photo" value="{{$student->photo}}"></br>
+                            <img width="150px" src="{{asset('storage/'.$student->photo)}}">
                         </div>
                         <button type="submit" name="edit" class="btn btn-primary float-right">Save Changes</button>
                     </form>
