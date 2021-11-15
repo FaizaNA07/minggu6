@@ -142,4 +142,8 @@ class StudentController extends Controller
         $pdf = PDF::loadview('students.report',['student'=>$student]);
         return $pdf->stream();
     }       
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 }
